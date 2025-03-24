@@ -31,6 +31,6 @@ function newsAgent()
             "DETAIL_IMAGE"=>$newEl["image_url"],
             "DETAIL_TEXT"=>$newEl["detail"]]);
     }
-    return "NewsAgent();";
+    return "newsAgent();";
 }
 
