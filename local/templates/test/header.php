@@ -24,14 +24,14 @@ $language = \Bitrix\Landing\Manager::getLangISO();
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<title><?php $APPLICATION->ShowTitle();?></title>
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?=SITE_TEMPLATE_PATH?>/assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="<?=SITE_TEMPLATE_PATH?>/css/styles.css" rel="stylesheet" />
 
 	<?php
 	$APPLICATION->ShowHead();
@@ -40,18 +40,9 @@ $language = \Bitrix\Landing\Manager::getLangISO();
 	?>
 </head>
 <body class="<?php $APPLICATION->ShowProperty('BodyClass');?>" <?php $APPLICATION->ShowProperty('BodyTag');?>>
-<div id="panel">
-<?php
-
-    $APPLICATION->ShowPanel();
-
-?>
-</div>
-<?php $APPLICATION->ShowProperty('Noscript');?>
-<?php $APPLICATION->ShowProperty('AfterBodyOpen');?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+        <a class="navbar-brand" href="#page-top"><img src="<?=SITE_TEMPLATE_PATH?>/assets/img/navbar-logo.svg" alt="..." /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ms-1"></i>
@@ -67,4 +58,8 @@ $language = \Bitrix\Landing\Manager::getLangISO();
         </div>
     </div>
 </nav>
+    <? $APPLICATION->ShowPanel(); ?>
+<?php $APPLICATION->ShowProperty('Noscript');?>
+<?php $APPLICATION->ShowProperty('AfterBodyOpen');?>
+
 <main class="w-100 <?php $APPLICATION->ShowProperty('MainClass');?>" <?php $APPLICATION->ShowProperty('MainTag');?>>

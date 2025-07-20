@@ -17,20 +17,34 @@ function newsAgent()
 
 
     foreach($main_page as &$value){
-        $parserHtml = new ParserHtml($main_page[0]["url"]);
+        $parserHtml = new ParserHtml($value["url"]);
         $detail =$parserHtml->process();
         $value["detail"] = $detail;
     }
+        foreach($main_page as $newEl){
+            $params = Array(
+                "max_len" => "75", // обрезает символьный код до 75 символов
+                "change_case" => "L", // буквы преобразуются к нижнему регистру
+                "replace_space" => "-", // меняем пробелы на нижнее подчеркивание
+                "replace_other" => "-", // меняем левые символы на нижнее подчеркивание
+                "delete_repeat_replace" => "true", // удаляем повторяющиеся нижние подчеркивания
+            );
+            $code = CUtil::translit($newEl["title"],"ru",$params);
+            $el = new CIBlockElement();
+            $el->Add(arFields: [
+                "IBLOCK_ID" => 5,
+                "ACTIVE" => 'Y',
+                "NAME"=>$newEl["title"],
+                "CODE" => $code,
+                "PREVIEW_TEXT"=>$newEl["text_preview"],
+                "DETAIL_PICTURE"=> CFile::MakeFileArray($newEl["image"]),
+                "PREVIEW_PICTURE"=>CFile::MakeFileArray($newEl["image"]),
+                "DETAIL_TEXT"=>$newEl["detail"],
+                "PROPERTY_VALUES"=>array("SOURCE"=>$newEl["url"])
+            ]);
+            echo ($el->getLastError());
+        }
 
-    foreach($main_page as $newEl){
-        $el = new CIBlockElement();
-        $el->Add(arFields: ["IBLOCK_ID" => 2,
-            "ACTIVE" => 'Y',"NAME"=>$newEl["title"],
-            "PREVIEW_TEXT"=>$newEl["snippet"],
-            "PREVIEW_IMAGE"=>$newEl["image_url"],
-            "DETAIL_IMAGE"=>$newEl["image_url"],
-            "DETAIL_TEXT"=>$newEl["detail"]]);
-    }
     return "newsAgent();";
 }
 
