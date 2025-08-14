@@ -1,10 +1,11 @@
-<?
+<?php
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Тестовое задание");
 $clear = preg_match('/^\/news\/.*\/$/',$_SERVER['REQUEST_URI']);
 if ($clear==false):
 ?>
- <?$APPLICATION->IncludeComponent(
+ <?php
+    $APPLICATION->IncludeComponent(
 	"bitrix:main.include",
 	".default",
 	array(
@@ -15,7 +16,7 @@ if ($clear==false):
 	),
 	false
 );?>
-    <?$APPLICATION->IncludeComponent(
+    <?php $APPLICATION->IncludeComponent(
     "bitrix:main.include",
     ".default",
     array(
@@ -27,7 +28,7 @@ if ($clear==false):
     false
 );?>
 
-<?php endif;?> <?$APPLICATION->IncludeComponent(
+<?php endif; ?> <?$APPLICATION->IncludeComponent(
 	"skillline:news",
 	".default",
 	Array(
@@ -96,7 +97,7 @@ if ($clear==false):
 		"USE_SHARE" => "N"
 	)
 );?> <?php if ($clear==false):?>
-    <?$APPLICATION->IncludeComponent(
+    <?php $APPLICATION->IncludeComponent(
         "bitrix:main.include",
         ".default",
         array(
@@ -107,7 +108,7 @@ if ($clear==false):
         ),
         false
     );?>
-<!-- Team--> <?$APPLICATION->IncludeComponent(
+<!-- Team--> <?php $APPLICATION->IncludeComponent(
 	"skillline:news.list",
 	".default",
 	Array(
@@ -165,7 +166,7 @@ if ($clear==false):
 		"STRICT_SECTION_CHECK" => "N"
 	)
 );?>
-    <?$APPLICATION->IncludeComponent(
+    <?php $APPLICATION->IncludeComponent(
         "bitrix:main.include",
         ".default",
         array(
@@ -178,4 +179,4 @@ if ($clear==false):
     );?>
 <?php endif;
 //newsAgent()
-?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?><?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
