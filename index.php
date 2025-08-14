@@ -5,8 +5,8 @@ $clear = preg_match('/^\/news\/.*\/$/',$_SERVER['REQUEST_URI']);
 if ($clear==false):
 ?>
  <?$APPLICATION->IncludeComponent(
-	"bitrix:main.include", 
-	".default", 
+	"bitrix:main.include",
+	".default",
 	array(
 		"COMPONENT_TEMPLATE" => ".default",
 		"AREA_FILE_SHOW" => "page",
